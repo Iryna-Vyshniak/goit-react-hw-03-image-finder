@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { GlobalStyle } from './GlobalStyle';
 import { Layout } from './Layout/Layout';
 import Modal from './Modal/Modal';
+import { InitialStateGallery } from './InitialStateGallery/InitialStateGallery';
 
 export default class App extends Component {
   state = {
@@ -28,7 +29,7 @@ export default class App extends Component {
         <button type="button" onClick={this.toggleModal}>
           Test Open Modal
         </button>
-
+        <InitialStateGallery text="Let`s find images together!" />
         {/* render modal by condition */}
         {isShowModal && (
           <Modal onClose={this.toggleModal}>

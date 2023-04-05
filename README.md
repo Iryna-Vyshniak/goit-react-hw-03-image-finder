@@ -1,2 +1,3 @@
 ## Image-Finder
-Keyword image search app
+
+An application for searching images by keyword using Pixabay API

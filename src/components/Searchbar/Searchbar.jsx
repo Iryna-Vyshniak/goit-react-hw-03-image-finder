@@ -10,7 +10,7 @@ import { HiMagnifyingGlass } from 'react-icons/hi2';
 
 export const Searchbar = () => {
   return (
-    <Header class="searchbar">
+    <Header>
       <SearchForm>
         <SearchFormBtn>
           <HiMagnifyingGlass size="24" />
@@ -18,7 +18,7 @@ export const Searchbar = () => {
         <SearchFormInput
           type="text"
           autocomplete="off"
-          autofocus
+          autoFocus
           placeholder="Search images and photos"
         />
       </SearchForm>

@@ -3,10 +3,14 @@ import { GlobalStyle } from './GlobalStyle';
 import { Layout } from './Layout/Layout';
 import Modal from './Modal/Modal';
 import { InitialStateGallery } from './InitialStateGallery/InitialStateGallery';
+import DefaultImg from 'assets/pbsh.png';
+import { ModalDescr, ModalImg } from './App.styled';
 
 export default class App extends Component {
   state = {
     isShowModal: false,
+    largeImgUrl: DefaultImg,
+    imgTags: 'Oops... there are no images matching your search',
   };
 
   componentDidMount() {}
@@ -21,7 +25,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { isShowModal } = this.state;
+    const { isShowModal, largeImgUrl, imgTags } = this.state;
 
     return (
       <Layout>
@@ -33,7 +37,8 @@ export default class App extends Component {
         {/* render modal by condition */}
         {isShowModal && (
           <Modal onClose={this.toggleModal}>
-            <img src="" alt="" />
+            <ModalImg src={largeImgUrl} alt="" />
+            <ModalDescr>{imgTags}</ModalDescr>
           </Modal>
         )}
         <GlobalStyle />

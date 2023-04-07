@@ -39,7 +39,7 @@ export default class App extends Component {
     console.log('state:', this.state);
     return (
       <>
-        <Searchbar onSearch={this.handleSubmit} />
+        <Searchbar onSubmit={this.handleSubmit} />
         <Layout>
           <InitialStateGallery text="Let`s find images together!" />
 

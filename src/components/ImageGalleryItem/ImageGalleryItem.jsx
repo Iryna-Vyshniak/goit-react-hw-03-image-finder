@@ -1,24 +1,20 @@
-import { Component } from 'react';
 import { ListItem, Picture } from './ImageGalleryItem.styled';
 import PropTypes from 'prop-types';
 
-export class ImageGalleryItem extends Component {
-  render() {
-    const {
-      item: { tags, webformatURL },
-    } = this.props;
-
-    return (
-      <ListItem>
-        <div>
-          <Picture src={webformatURL} alt={tags} loading="lazy" />
-        </div>
-      </ListItem>
-    );
-  }
-}
+export const ImageGalleryItem = ({ item }) => {
+  console.log(item);
+  return (
+    <ListItem>
+      <div>
+        <Picture src={item.webformatURL} alt={item.tags} loading="lazy" />
+      </div>
+    </ListItem>
+  );
+};
 
 ImageGalleryItem.propTypes = {
-  tags: PropTypes.string.isRequired,
-  webformatURL: PropTypes.string.isRequired,
+  item: PropTypes.shape({
+    tags: PropTypes.string.isRequired,
+    webformatURL: PropTypes.string.isRequired,
+  }).isRequired,
 };

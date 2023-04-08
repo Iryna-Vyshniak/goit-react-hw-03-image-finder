@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 32px;
-  margin: 20vh auto;
+  margin: 1vh auto;
 `;
 
 export const Text = styled.p`
@@ -25,4 +25,5 @@ export const ErrorImg = styled.img`
   height: auto;
   object-fit: contain;
   object-position: center;
+  margin-bottom: 24px;
 `;

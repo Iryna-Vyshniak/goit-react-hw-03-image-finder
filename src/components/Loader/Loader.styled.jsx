@@ -20,7 +20,7 @@ export const PendingDog = styled.img`
   top: 35%;
   left: 45%;
   margin: 0 auto;
-  width: 25vw;
+  width: 15vw;
   height: auto;
   object-fit: contain;
   object-position: center;

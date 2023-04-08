@@ -4,7 +4,6 @@ export const Wrapper = styled.div`
   display: grid;
   grid-gap: 8px;
   place-content: center;
-  grid-template-rows: repeat(auto-fill, minmax(220px, 1fr));
 
   margin: 1vh auto;
   padding-right: ${props => props.theme.space[4]}px;
@@ -15,6 +14,7 @@ export const Wrapper = styled.div`
 
 export const Text = styled.p`
   margin: 0 auto;
+  margin-bottom: 32px;
   max-width: 80%;
   color: ${props => props.theme.colors.accent};
   text-shadow: ${props => props.theme.shadows.textShadow};

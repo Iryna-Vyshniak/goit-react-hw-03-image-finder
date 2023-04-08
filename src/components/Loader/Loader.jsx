@@ -16,6 +16,7 @@ export const Loader = () => {
     </LoaderBackdrop>
   );
 };
+
 // export const Loader = () => {
 //   return (
 //     <LoaderBackdrop>

@@ -4,13 +4,14 @@ import React, { Component } from 'react';
 import { List } from './ImageGallery.styled';
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 import DefaultImg from 'assets/pbsh.png';
-// import { toast } from 'react-toastify';
-// import { notifyOptions } from '../notify/notify';
 import { Loader } from '../Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { InitialStateGallery } from '../InitialStateGallery/InitialStateGallery';
 import { Button } from 'components/Button/Button';
 import Modal from 'components/Modal/Modal';
+
+// import { toast } from 'react-toastify';
+// import { notifyOptions } from '../notify/notify';
 
 const Status = {
   IDLE: 'idle',

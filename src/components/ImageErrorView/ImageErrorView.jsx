@@ -1,5 +1,6 @@
 import errorImage from 'assets/error-1.png';
 import { ErrorImg, Text, Wrapper } from './ImageErrorView.styled';
+import PropTypes from 'prop-types';
 
 export default function ImageErrorView({ message }) {
   return (
@@ -9,3 +10,7 @@ export default function ImageErrorView({ message }) {
     </Wrapper>
   );
 }
+
+ImageErrorView.propTypes = {
+  message: PropTypes.string,
+};

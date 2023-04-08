@@ -10,9 +10,7 @@ export const Button = ({ children, type = 'button', onClick = null }) => {
 };
 
 Btn.propTypes = {
-  icon: PropTypes.any,
-  disabled: PropTypes.bool,
   type: PropTypes.string,
-  status: PropTypes.string,
   onClick: PropTypes.func,
+  children: PropTypes.any,
 };

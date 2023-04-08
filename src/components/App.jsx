@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import { GlobalStyle } from './GlobalStyle';
-import { Layout } from './Layout/Layout';
-import Modal from './Modal/Modal';
-import { InitialStateGallery } from './InitialStateGallery/InitialStateGallery';
-import DefaultImg from 'assets/pbsh.png';
-import { ModalDescr, ModalImg } from './App.styled';
+//import { Layout } from './Layout/Layout';
+
 import { Searchbar } from './Searchbar/Searchbar';
-//import { Loader } from './Loader/Loader';
+import ImageGallery from './ImageGallery/ImageGallery';
+
+import { ToastContainer, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default class App extends Component {
   state = {
     textSearch: '',
-    isLoading: false,
-    isShowModal: false,
-    largeImgUrl: DefaultImg,
-    imgTags: 'Oops... there are no images matching your search',
   };
 
   componentDidMount() {}
@@ -26,34 +22,17 @@ export default class App extends Component {
     this.setState({ textSearch });
   };
 
-  // for toggle modal
-  toggleModal = () => {
-    this.setState(({ isShowModal }) => ({
-      isShowModal: !isShowModal,
-    }));
-  };
-
   render() {
-    const { isShowModal, largeImgUrl, imgTags } = this.state;
+    const { textSearch } = this.state;
+    // console.log('state:', this.state);
 
-    console.log('state:', this.state);
     return (
       <>
         <Searchbar onSubmit={this.handleSubmit} />
-        <Layout>
-          <InitialStateGallery text="Let`s find images together!" />
 
-          {/* render Loading by condition */}
+        <ImageGallery value={textSearch} />
 
-          {/* render modal by condition */}
-
-          {isShowModal && (
-            <Modal onClose={this.toggleModal}>
-              <ModalImg src={largeImgUrl} alt="" />
-              <ModalDescr>{imgTags}</ModalDescr>
-            </Modal>
-          )}
-        </Layout>
+        <ToastContainer transition={Slide} draggablePercent={60} />
         <GlobalStyle />
       </>
     );

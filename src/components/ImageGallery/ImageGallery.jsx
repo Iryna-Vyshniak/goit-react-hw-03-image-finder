@@ -1,15 +1,16 @@
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import imagesAPI from 'services/getImages';
 import React, { Component } from 'react';
 import { List } from './ImageGallery.styled';
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
-//import DefaultImg from 'assets/pbsh.png';
+import DefaultImg from 'assets/pbsh.png';
 // import { toast } from 'react-toastify';
 // import { notifyOptions } from '../notify/notify';
 import { Loader } from '../Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { InitialStateGallery } from '../InitialStateGallery/InitialStateGallery';
 import { Button } from 'components/Button/Button';
+import Modal from 'components/Modal/Modal';
 
 const Status = {
   IDLE: 'idle',
@@ -19,13 +20,21 @@ const Status = {
 };
 
 export default class ImageGallery extends Component {
+  static propTypes = {
+    value: PropTypes.string.isRequired,
+  };
+
   state = {
     value: '',
     images: [],
     error: null,
     status: Status.IDLE,
+
     page: 1,
     totalPages: 0,
+
+    isShowModal: false,
+    modalData: { img: DefaultImg, tags: '' },
   };
 
   // перевіряємо, щоб в пропсах змінився запит
@@ -55,7 +64,7 @@ export default class ImageGallery extends Component {
       imagesAPI
         .getImages(nextValue, page)
         .then(images => {
-          //console.log(images);
+          //  this.showNotifications(images);
           this.setState(prevState => ({
             images:
               page === 1 ? images.hits : [...prevState.images, ...images.hits],
@@ -68,13 +77,37 @@ export default class ImageGallery extends Component {
     }
   }
 
-  // custom methods
-  handleLoad = () => {
+  // custom method to btn load
+  handleLoadMore = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
+  setModalData = modalData => {
+    this.setState({ modalData, isShowModal: true });
+  };
+
+  handleModalClose = () => {
+    this.setState({ isShowModal: false });
+  };
+
+  // custom method for notifications
+  // showNotifications = images => {
+  //   if (this.state.page === 1) {
+  //     images.hits.lenth > 0
+  //       ? toast.success(
+  //           `Hooray! We found ${images.total} images.`,
+  //           notifyOptions
+  //         )
+  //       : toast.warn(
+  //           `Sorry, but there are no results for your query`,
+  //           notifyOptions
+  //         );
+  //   }
+  // };
+
   render() {
-    const { images, error, status, page, totalPages } = this.state;
+    const { images, error, status, page, totalPages, isShowModal, modalData } =
+      this.state;
     //console.log('images: ', images);
 
     if (status === 'idle') {
@@ -95,18 +128,24 @@ export default class ImageGallery extends Component {
     }
 
     if (status === 'resolved') {
-      //toast.success(`Hooray! We found ${images.total} images.`, notifyOptions);
       return (
         <>
           <List>
             {images.map(image => (
-              <ImageGalleryItem key={image.id} item={image} />
+              <ImageGalleryItem
+                key={image.id}
+                item={image}
+                onImageClick={this.setModalData}
+              />
             ))}
           </List>
           {images.length > 0 && status !== 'pending' && page <= totalPages && (
-            <Button status="load" onClick={this.handleLoad}>
+            <Button status="load" onClick={this.handleLoadMore}>
               Load More
             </Button>
+          )}
+          {isShowModal && (
+            <Modal modalData={modalData} onModalClose={this.handleModalClose} />
           )}
         </>
       );

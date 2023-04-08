@@ -25,13 +25,14 @@ export default class ImageGallery extends Component {
     error: null,
     status: Status.IDLE,
     page: 1,
+    totalPages: 0,
   };
 
   // перевіряємо, щоб в пропсах змінився запит
   // y static відсутній this, тому дублюємо в state - search: ''
   static getDerivedStateFromProps(nextProps, prevState) {
     if (prevState.value !== nextProps.value) {
-      return { page: 1, value: nextProps.value, images: [] };
+      return { page: 1, value: nextProps.value };
     }
     return null;
   }
@@ -47,15 +48,20 @@ export default class ImageGallery extends Component {
       //console.log('nextValue:', nextValue);
       this.setState({ status: Status.PENDING });
 
+      // перевіряємо чи є помилка, якщо є - записуємо null
+      if (this.state.error) {
+        this.setState({ error: null });
+      }
       imagesAPI
         .getImages(nextValue, page)
-        .then(({ hits }) => {
-          //console.log(hits);
-
-          this.setState({
-            images: [...this.state.images, ...hits],
+        .then(images => {
+          //console.log(images);
+          this.setState(prevState => ({
+            images:
+              page === 1 ? images.hits : [...prevState.images, ...images.hits],
             status: Status.RESOLVED,
-          });
+            totalPages: Math.floor(images.totalHits / 12),
+          }));
           // console.log(this.state.images);
         })
         .catch(error => this.setState({ error, status: Status.REJECTED }));
@@ -68,9 +74,8 @@ export default class ImageGallery extends Component {
   };
 
   render() {
-    const { images, error, status } = this.state;
+    const { images, error, status, page, totalPages } = this.state;
     //console.log('images: ', images);
-    // const { value } = this.props;
 
     if (status === 'idle') {
       return <InitialStateGallery text="Let`s find images together!" />;
@@ -88,6 +93,7 @@ export default class ImageGallery extends Component {
         />
       );
     }
+
     if (status === 'resolved') {
       //toast.success(`Hooray! We found ${images.total} images.`, notifyOptions);
       return (
@@ -97,10 +103,11 @@ export default class ImageGallery extends Component {
               <ImageGalleryItem key={image.id} item={image} />
             ))}
           </List>
-
-          <Button status="load" onClick={this.handleLoad}>
-            Load More
-          </Button>
+          {images.length > 0 && status !== 'pending' && page <= totalPages && (
+            <Button status="load" onClick={this.handleLoad}>
+              Load More
+            </Button>
+          )}
         </>
       );
     }

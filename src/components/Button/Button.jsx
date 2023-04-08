@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { Btn } from './Button.styled';
-//import Spinner from 'react-bootstrap/Spinner';
 
 export const Button = ({ children, type = 'button', onClick = null }) => {
   return (

@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-gap: 16px;
+  grid-gap: 8px;
   place-content: center;
-  grid-template-rows: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(220px, 1fr));
 
-  margin: 10vh auto;
+  margin: 1vh auto;
   padding-right: ${props => props.theme.space[4]}px;
   padding-left: ${props => props.theme.space[4]}px;
   padding-top: ${props => props.theme.space[3]}px;

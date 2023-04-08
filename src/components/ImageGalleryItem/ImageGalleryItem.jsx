@@ -2,7 +2,7 @@ import { ListItem, Picture } from './ImageGalleryItem.styled';
 import PropTypes from 'prop-types';
 
 export const ImageGalleryItem = ({ item }) => {
-  console.log(item);
+  //console.log(item);
   return (
     <ListItem>
       <div>

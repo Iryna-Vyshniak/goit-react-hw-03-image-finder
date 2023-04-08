@@ -1,14 +1,20 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 32px;
+  display: grid;
+  grid-gap: 16px;
+  place-content: center;
+  grid-template-rows: repeat(auto-fill, minmax(320px, 1fr));
+
+  margin: 1vh auto;
+  padding-right: ${props => props.theme.space[4]}px;
+  padding-left: ${props => props.theme.space[4]}px;
+  padding-top: ${props => props.theme.space[3]}px;
+  padding-bottom: ${props => props.theme.space[3]}px;
 `;
 
 export const Text = styled.p`
+  margin: 0 auto;
   max-width: 80%;
   color: ${props => props.theme.colors.accent};
   text-shadow: ${props => props.theme.shadows.textShadow};
@@ -20,6 +26,9 @@ export const Text = styled.p`
 `;
 
 export const Hero = styled.img`
-  width: 45%;
+  width: 25vw;
   height: auto;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
 `;

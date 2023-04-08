@@ -1,5 +1,4 @@
 import { RevolvingDot } from 'react-loader-spinner';
-
 import React from 'react';
 import { LoaderBackdrop } from './Loader.styled';
 
@@ -7,11 +6,11 @@ export const Loader = () => {
   return (
     <LoaderBackdrop>
       <RevolvingDot
-        height="100"
-        width="100"
-        radius="6"
+        height="150"
+        width="150"
+        radius="50"
         color="#FD5523"
-        secondaryColor="#FFFBE6"
+        secondaryColor="#37966F"
         ariaLabel="revolving-dot-loading"
         wrapperStyle={{ position: 'absolute', top: '45%', left: '45%' }}
         wrapperClass="revolving-dot-wrapper"

@@ -7,6 +7,7 @@ import ImageGallery from './ImageGallery/ImageGallery';
 
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Layout } from './Layout/Layout';
 
 export default class App extends Component {
   state = {
@@ -29,9 +30,9 @@ export default class App extends Component {
     return (
       <>
         <Searchbar onSubmit={this.handleSubmit} />
-
-        <ImageGallery value={textSearch} />
-
+        <Layout>
+          <ImageGallery value={textSearch} />
+        </Layout>
         <ToastContainer transition={Slide} draggablePercent={60} />
         <GlobalStyle />
       </>

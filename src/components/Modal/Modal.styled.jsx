@@ -15,13 +15,15 @@ export const ModalContent = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  padding-right: ${props => props.theme.space[4]}px;
-  padding-left: ${props => props.theme.space[4]}px;
-  padding-top: ${props => props.theme.space[4]}px;
-  padding-bottom: ${props => props.theme.space[4]}px;
+  padding-right: ${props => props.theme.space[2]}px;
+  padding-left: ${props => props.theme.space[2]}px;
+  padding-top: ${props => props.theme.space[2]}px;
+  padding-bottom: ${props => props.theme.space[2]}px;
 
-  max-width: calc(100vw - 48px);
-  max-height: calc(100vh - 24px);
+  // max-width: calc(100vw - 48px);
+  // min-height: calc(100vh - 24px);
+  width: 65vw;
+  height: 650px;
 
   background-color: #fffbe6;
 
@@ -46,7 +48,7 @@ export const ModalDescr = styled.p`
   padding-bottom: ${props => props.theme.space[4]}px;
 
   width: 100%;
-
+  
   color: ${props => props.theme.colors.accent};
   text-shadow: ${props => props.theme.shadows.textShadow};
   background-color: rgba(185, 228, 201, 0.5);
@@ -56,6 +58,13 @@ export const ModalDescr = styled.p`
   backdrop-filter: blur(5.5px);
 
   font-family: ${props => props.theme.fonts.heading}
-  font-size: ${props => props.theme.fontSizes.l};
+  font-size: ${props => props.theme.fontSizes.m};
   text-align: center;
+`;
+
+export const ModalPicture = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 `;

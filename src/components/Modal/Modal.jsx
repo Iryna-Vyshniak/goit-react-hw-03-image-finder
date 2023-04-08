@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
-import { ModalBackdrop, ModalContent, ModalDescr } from './Modal.styled';
+import {
+  ModalBackdrop,
+  ModalContent,
+  ModalDescr,
+  ModalPicture,
+} from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -40,7 +45,7 @@ export default class Modal extends Component {
     return createPortal(
       <ModalBackdrop onClick={this.handleBackdropeClick}>
         <ModalContent>
-          <img src={largeImageURL} alt={tags} />
+          <ModalPicture src={largeImageURL} alt={tags} />
           <ModalDescr>{tags}</ModalDescr>
         </ModalContent>
       </ModalBackdrop>,

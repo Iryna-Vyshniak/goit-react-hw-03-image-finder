@@ -14,3 +14,14 @@ export const LoaderBackdrop = styled.div`
   height: 100vh;
   background-color: rgba(185, 228, 201, 0.2);
 `;
+
+export const PendingDog = styled.img`
+  position: absolute;
+  top: 35%;
+  left: 45%;
+  margin: 0 auto;
+  width: 25vw;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+`;

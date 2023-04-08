@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   place-content: center;
   grid-template-rows: repeat(auto-fill, minmax(320px, 1fr));
 
-  margin: 1vh auto;
+  margin: 10vh auto;
   padding-right: ${props => props.theme.space[4]}px;
   padding-left: ${props => props.theme.space[4]}px;
   padding-top: ${props => props.theme.space[3]}px;

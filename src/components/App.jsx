@@ -14,9 +14,8 @@ export default class App extends Component {
     textSearch: '',
   };
 
-  componentDidMount() {}
-
-  componentWillUnmount() {}
+  // componentDidMount() {}
+  // componentWillUnmount() {}
 
   // custom methods
   handleSubmit = textSearch => {

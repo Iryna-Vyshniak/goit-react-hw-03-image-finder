@@ -7,7 +7,7 @@ import {
 } from './Searchbar.styled';
 import { HiMagnifyingGlass } from 'react-icons/hi2';
 import { toast } from 'react-toastify';
-import { notifyOptions } from '../notify/notify';
+import { notifyOptions } from 'notify/notify';
 import PropTypes from 'prop-types';
 
 export class Searchbar extends Component {

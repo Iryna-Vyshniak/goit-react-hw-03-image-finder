@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { GlobalStyle } from './GlobalStyle';
-//import { Layout } from './Layout/Layout';
 
 import { Searchbar } from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
@@ -14,9 +13,6 @@ export default class App extends Component {
     textSearch: '',
   };
 
-  // componentDidMount() {}
-  // componentWillUnmount() {}
-
   // custom methods
   handleSubmit = textSearch => {
     this.setState({ textSearch });
@@ -24,7 +20,6 @@ export default class App extends Component {
 
   render() {
     const { textSearch } = this.state;
-    // console.log('state:', this.state);
 
     return (
       <>

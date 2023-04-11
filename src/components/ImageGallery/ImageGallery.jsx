@@ -10,9 +10,6 @@ import { InitialStateGallery } from '../InitialStateGallery/InitialStateGallery'
 import { Button } from 'components/Button/Button';
 import Modal from 'components/Modal/Modal';
 
-// import { toast } from 'react-toastify';
-// import { notifyOptions } from '../notify/notify';
-
 const Status = {
   IDLE: 'idle',
   PENDING: 'pending',
@@ -51,11 +48,8 @@ export default class ImageGallery extends Component {
     const { page } = this.state;
     const prevValue = prevProps.value;
     const nextValue = this.props.value;
-    //console.log(nextValue);
     //   страхуємо від повторного запиту, якщо вже таке слово було введене
     if (prevValue !== nextValue || prevState.page !== page) {
-      // console.log('prevValue:', prevValue);
-      //console.log('nextValue:', nextValue);
       this.setState({ status: Status.PENDING });
 
       // перевіряємо чи є помилка, якщо є - записуємо null
@@ -65,14 +59,12 @@ export default class ImageGallery extends Component {
       imagesAPI
         .getImages(nextValue, page)
         .then(images => {
-          //  this.showNotifications(images);
           this.setState(prevState => ({
             images:
               page === 1 ? images.hits : [...prevState.images, ...images.hits],
             status: Status.RESOLVED,
             totalPages: Math.floor(images.totalHits / 12),
           }));
-          // console.log(this.state.images);
         })
         .catch(error => this.setState({ error, status: Status.REJECTED }));
     }
@@ -91,25 +83,9 @@ export default class ImageGallery extends Component {
     this.setState({ isShowModal: false });
   };
 
-  // custom method for notifications
-  // showNotifications = images => {
-  //   if (this.state.page === 1) {
-  //     images.hits.lenth > 0
-  //       ? toast.success(
-  //           `Hooray! We found ${images.total} images.`,
-  //           notifyOptions
-  //         )
-  //       : toast.warn(
-  //           `Sorry, but there are no results for your query`,
-  //           notifyOptions
-  //         );
-  //   }
-  // };
-
   render() {
     const { images, error, status, page, totalPages, isShowModal, modalData } =
       this.state;
-    //console.log('images: ', images);
 
     if (status === 'idle') {
       return <InitialStateGallery text="Let`s find images together!" />;
@@ -141,9 +117,7 @@ export default class ImageGallery extends Component {
             ))}
           </List>
           {images.length > 0 && status !== 'pending' && page <= totalPages && (
-            <Button status="load" onClick={this.handleLoadMore}>
-              Load More
-            </Button>
+            <Button onClick={this.handleLoadMore}>Load More</Button>
           )}
           {isShowModal && (
             <Modal modalData={modalData} onModalClose={this.handleModalClose} />

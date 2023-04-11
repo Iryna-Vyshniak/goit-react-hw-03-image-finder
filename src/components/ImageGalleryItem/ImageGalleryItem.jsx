@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export const ImageGalleryItem = ({ item, onImageClick }) => {
   const { largeImageURL, tags, webformatURL } = item;
-  //console.log(item);
+
   return (
     <ListItem
       onClick={e => {
